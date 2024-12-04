@@ -1,6 +1,6 @@
-# docker build . -t bacnh85/gitolite-cgit
+# docker build . -t ijskegel/gitolite-cgit
 FROM alpine:latest
-LABEL MAINTAINER="mail@bacnh.com"
+LABEL MAINTAINER="ijskegel@gmail.com"
 
 # Install needed packages
 RUN set -xe \

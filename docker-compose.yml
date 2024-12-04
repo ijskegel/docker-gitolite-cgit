@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  app:
-    image: bacnh85/gitolite-cgit
+  git-server:
+    image: ijskegel/gitolite-cgit
     container_name: gitolite-cgit
     env_file: config.env
     volumes:
       - git:/var/lib/git/
     ports:
-      - "22:22"
-      - "80:80"
+      - "2222:22"
+      - "8080:80"
       - "9418:9418"
     tty: true
-volumes: 
+volumes:
   git:
