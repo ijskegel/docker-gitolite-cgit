@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   git-server:
     image: ijskegel/gitolite-cgit
@@ -14,3 +12,8 @@ services:
     tty: true
 volumes:
   git:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/git
+      o: bind
