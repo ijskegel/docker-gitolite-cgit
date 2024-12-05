@@ -17,7 +17,7 @@ if [ ! -f "/var/lib/git/.ssh/authorized_keys" ]; then
 fi
 
 # Init container
-if [ ! -f /etc/nginx/conf.d/cgit.conf ]; then
+if [ ! -f /etc/nginx/http.d/cgit.conf ]; then
     # enable random git password
     GIT_PASSWORD=$(date +%s | sha256sum | base64 | head -c 32)
     echo git:$GIT_PASSWORD | chpasswd
@@ -122,12 +122,6 @@ EOF
         echo "# Set the title and heading of the repository index page" >>/etc/cgitrc
         echo "root-title=$CGIT_ROOT_TITLE" >>/etc/cgitrc
     fi
-
-    # Using highlight syntax
-    #sed -i.bak \
-    #  -e "s#exec highlight --force -f -I -X -S #\#&#g" \
-    #  -e "s#\#exec highlight --force -f -I -O xhtml#exec highlight --force --inline-css -f -I -O xhtml#g" \
-    #  /usr/lib/cgit/filters/syntax-highlighting.sh
 
     # Nginx configuration
     rm /etc/nginx/http.d/default.conf
